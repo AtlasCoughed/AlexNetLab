@@ -30,6 +30,7 @@ fc7 = tf.stop_gradient(fc7)
 shape = (fc7.get_shape().as_list()[-1], nb_classes)
 fc8W = tf.Variable(tf.truncated_normal(shape, stddev=1e-2))
 fc8b = tf.Variable(tf.zeros(nb_classes))
+
 logits = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
 
 
@@ -37,11 +38,16 @@ logits = tf.nn.xw_plus_b(fc7, fc8W, fc8b)
 # HINT: Look back at your traffic signs project solution, you may
 # be able to reuse some the code.
 cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, labels)
+
+# Loss
 loss_op = tf.reduce_mean(cross_entropy)
 opt = tf.train.AdamOptimizer()
+
+# Training
 train_op = opt.minimize(loss_op, var_list=[fc8W, fc8b])
 init_op = tf.global_variables_initializer()
 
+# Accuracy Operations
 preds = tf.arg_max(logits, 1)
 accuracy_op = tf.reduce_mean(tf.cast(tf.equal(preds, labels), tf.float32))
 
