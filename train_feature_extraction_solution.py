@@ -24,6 +24,7 @@ resized = tf.image.resize_images(features, (227, 227))
 # model.
 fc7 = AlexNet(resized, feature_extract=True)
 fc7 = tf.stop_gradient(fc7)
+
 shape = (fc7.get_shape().as_list()[-1], nb_classes)
 fc8W = tf.Variable(tf.truncated_normal(shape, stddev=1e-2))
 fc8b = tf.Variable(tf.zeros(nb_classes))
