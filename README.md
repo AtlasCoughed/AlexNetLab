@@ -11,3 +11,10 @@ Before you start the lab, you should first install:
 * SciPy
 * matplotlib
 
+Credits
+This lab utilizes:
+
+An implementation of AlexNet created by Michael Guerzhoy and Davi Frossard
+AlexNet weights provided by the Berkeley Vision and Learning Center
+Training data from the German Traffic Sign Recognition Benchmark
+AlexNet was originally trained on the ImageNet database.
